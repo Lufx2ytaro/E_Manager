@@ -6,6 +6,7 @@ class Folder : public TaskCollection
 private:
 
 	string folderName;
+	string roadOfFolder;
 
 
 public:
@@ -17,6 +18,11 @@ public:
 	virtual void create();
 	virtual void Remove();
 	virtual void Copy();
+	virtual void Open();
+	virtual void Rename();
+	virtual void Move();
+	virtual void Search();
+	virtual void Information();
 
 
 

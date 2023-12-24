@@ -18,8 +18,9 @@ public:
 	virtual void Open();
 	virtual void Rename();
 	virtual void Move();
-	virtual void Information();
 	virtual void Search();
+	virtual void Information();
+	
 
 
 

@@ -103,3 +103,86 @@ void File::Open()
 		cout << "Wrong road!!!" << endl;
 	}
 }
+
+void File::Rename()
+{
+	string newFile;
+	string road;
+	road = roadOfFile;
+	cout << "Enter New Name for file" << endl;
+	getline(cin, newFile);
+	road += newFile;
+	if (rename(GetName().c_str(), road.c_str()) != 0)
+	{
+		cout << "Error  I can't rename File" << endl;
+	}
+	else
+	{
+		cout << "File was renamed" << endl;
+	}
+}
+
+void File::Move()
+{
+	string name;
+	string newRoad;
+	name = GetName();
+	cout << "Enter new 'road' to move File (Use // for move folder) " << endl;
+	newRoad += nameOfFile;
+	if (rename(name.c_str(), newRoad.c_str()) != 0)
+	{
+		cout << " I can't to move File" << endl;
+	}
+	else
+	{
+		cout << "File was movied" << endl;
+	}
+}
+
+void File::Search()
+{
+	_finddata_t fileInfo;
+	string road;
+	string fileMask;
+	cout << "Enter (road) with(\\\\) at the end" << endl;
+	getline(cin, road);
+	cout << "pls, Enter Mask of File((*.txt))" << endl;
+	getline(cin, fileMask);
+	road += fileMask;
+	auto res = _findfirst(road.c_str(), &fileInfo);
+	cout << "\n\t\t\t\tI FOUND these Files" << endl;
+
+	if (res != 0)
+	{
+		do
+		{
+			if (res != -1)
+			{
+				cout << fileInfo.name << endl;
+			}
+		} while (_findnext(res, &fileInfo) != 0);
+		cout << endl;
+	}
+	else
+	{
+		cout << "I can't find Files sorry" << endl;
+	}
+}
+
+void File::Information()
+{
+	_finddata_t fileInfo;
+	auto res = _findfirst(GetName().c_str(), &fileInfo);
+	if (res != -1)
+	{
+		cout << "\t\t\t File Information" << endl;
+		cout << ((fileInfo.attrib & _A_HIDDEN) ? "\t\t\tHIDDEN" : "\t\t\tNOT HIDDEN") << endl;
+		cout << ((fileInfo.attrib & _A_RDONLY) ? "\t\t\tREAD ONLY" : "\t\t\tNOT READ ONLY") << endl;
+		cout << "\n\t\t\tFILENAME: " << fileInfo.name << endl;
+		cout << "\n\t\t\tSIZE: " << fileInfo.size << " BYTES" << endl;
+	}
+	else
+	{
+		cout << "\t\t\tCANT FIND ANY FILE\n";
+	}
+}
