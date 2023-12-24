@@ -1,5 +1,5 @@
 #include "Folder.h"
-#include<string>
+
 
 
 void Folder::create()
@@ -10,7 +10,7 @@ void Folder::create()
 	getline(cin,road);
 	cout << " Enter Name of Folder " << endl;
 	getline(cin, name);
-	road = road + name;
+	road += name;
 
 	if (_mkdir(road.c_str()) == -1) 
 	{
@@ -25,7 +25,7 @@ void Folder::create()
 void Folder::Remove()
 {
 	string newRoad = "rmdir /s /q ";
-	newRoad = newRoad + GetName();
+	newRoad += GetName();
 	
 	if (system(newRoad.c_str()))
 	{
@@ -44,7 +44,7 @@ void Folder::Copy()
 	cout << "Enter 'road' for creating Folder (Use // for move folder) " << endl;
 	getline(cin, newRoad);
 	copyName = folderName;
-	newRoad = newRoad + copyName;
+	newRoad += copyName;
 	_mkdir(newRoad.c_str());
 	cout << "copy" + GetName() + newRoad;
 }

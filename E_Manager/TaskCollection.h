@@ -5,6 +5,8 @@
 #include <io.h>
 #include <direct.h>
 #include <fstream>
+#include<string>
+#include<vector>
 using namespace std;
 
 class TaskCollection
