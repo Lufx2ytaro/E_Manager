@@ -34,6 +34,6 @@ public:
 		nameOfFile = file;
 	}
 
-	virtual ~File()=0 {};
+	virtual ~File() {};
 };
 

@@ -35,6 +35,6 @@ public:
 		return folderName;
 	}
 
-	virtual ~Folder()=0 {}
+	virtual ~Folder() {}
 };
 

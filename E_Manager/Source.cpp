@@ -1,5 +1,6 @@
 #include<iostream>
-#include"Folder.h"
+#include"InterFace.h"
+
 using namespace std;
 
 int main()
@@ -10,5 +11,6 @@ int main()
 	// в copy цикл вайл из тг проверить!
 	// rename file.cpp
 
-	
+	InterFace menu;
+	menu.UserChoise();
 }
